@@ -1,16 +1,14 @@
-[project]
+[tool.poetry]
 name = "budgeting-app"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Your Name",email = "you@example.com"}
-]
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "quart (>=0.20.0,<0.21.0)"
-]
+package-mode = false
 
+[tool.poetry.dependencies]
+python = ">=3.13"
+quart = ">=0.20.0,<0.21.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
