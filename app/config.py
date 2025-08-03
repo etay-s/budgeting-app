@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     db_name: str
     db_engine_echo: bool = False
 
+    jwt_secret: str
+
     @property
     def db_url(self) -> str:
         return (
