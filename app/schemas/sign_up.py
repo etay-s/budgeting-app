@@ -4,7 +4,8 @@ from dataclasses import dataclass
 class SignUpRequest:
     name: str
     email: str
+    password: str
 
 @dataclass
 class SignUpResponse(SignUpRequest):
-    id: int
+    id: str
