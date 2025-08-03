@@ -11,7 +11,7 @@ sign_up_bp = Blueprint('sign_up', __name__)
 @validate_response(SignUpResponse)
 async def balance(data: SignUpRequest) -> SignUpResponse:
     async with AsyncSessionLocal() as session:
-        user = User(name=data["name"], email=data["email"])
+        user = User(name=data.email, email=data.email)
         session.add(user)
         await session.commit()
         await session.refresh(user)

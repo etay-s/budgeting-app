@@ -1,7 +1,7 @@
 from quart import Quart, request
 from quart_schema import QuartSchema
-from config import settings
-from routes import balance_bp, sign_up_bp
+from app.config import settings
+from app.routes import balance_bp, sign_up_bp
 
 app = Quart(__name__)
 QuartSchema(app)
@@ -13,5 +13,5 @@ app.register_blueprint(sign_up_bp)
 async def hello():
     return 'hello world!'
 
-if __name__ == "__main__":
+def run() -> None:
     app.run(debug=settings.debug)

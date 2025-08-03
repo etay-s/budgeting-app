@@ -1,6 +1,6 @@
 from quart import Blueprint, request
 from quart_schema import validate_request, validate_response
-from schemas.balance import BalanceRequest, BalanceResponse
+from app.schemas.balance import BalanceRequest, BalanceResponse
 
 balance_bp = Blueprint('balance', __name__)
 
