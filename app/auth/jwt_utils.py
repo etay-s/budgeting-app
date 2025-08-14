@@ -3,6 +3,8 @@ from datetime import datetime, timezone, timedelta
 from app.config import settings
 from functools import wraps
 from quart import request
+from quart_schema import validate_headers
+from app.auth import AuthHeaders
 
 def create_access_token(data: dict, expires_delta: int = 3600):
     to_encode = data.copy()
@@ -20,6 +22,7 @@ def verify_token(token: str):
     
 def auth_required(func):
     @wraps(func)
+    @validate_headers(AuthHeaders)
     async def wrapper(*args, **kwargs):
         auth_header = request.headers.get("Authorization", "")
         token = auth_header.replace("Bearer ", "")
