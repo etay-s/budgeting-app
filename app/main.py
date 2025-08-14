@@ -2,7 +2,7 @@ from quart import Quart, request
 from quart_schema import QuartSchema
 from app.config import settings
 from app.routes import balance_bp, sign_up_bp, login_bp
-from app.auth.jwt_utils import auth_required
+from app.auth import auth_required
 
 app = Quart(__name__)
 QuartSchema(app)

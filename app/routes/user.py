@@ -3,8 +3,7 @@ from quart_schema import validate_request, validate_response
 from app.schemas.user import SignUpRequest, SignUpResponse, LoginRequest, LoginResponse
 from app.db import AsyncSessionLocal
 from app.models import User
-from app.auth.password_utils import hash_password, verify_password
-from app.auth.jwt_utils import create_access_token
+from app.auth import hash_password, verify_password, create_access_token
 from app.repositories.user_repo import get_user_by_email
 
 sign_up_bp = Blueprint('sign_up', __name__)
