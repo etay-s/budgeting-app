@@ -18,7 +18,7 @@ def verify_token(token: str):
     except jwt.InvalidTokenError:
         return None
     
-def jwt_required(func):
+def auth_required(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
         auth_header = request.headers.get("Authorization", "")
