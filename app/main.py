@@ -5,7 +5,16 @@ from app.routes import balance_bp, sign_up_bp, login_bp
 from app.auth import auth_required
 
 app = Quart(__name__)
-QuartSchema(app)
+QuartSchema(
+    app,
+    security_schemes={
+        "bearer_auth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearer_format": "JWT"
+        }
+    },
+)
 
 app.register_blueprint(balance_bp)
 app.register_blueprint(sign_up_bp)

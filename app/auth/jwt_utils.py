@@ -3,7 +3,7 @@ from datetime import datetime, timezone, timedelta
 from app.config import settings
 from functools import wraps
 from quart import request
-from quart_schema import validate_headers
+from quart_schema import validate_headers, security_scheme
 from pydantic import BaseModel
 
 class AuthHeaders(BaseModel):
@@ -25,6 +25,7 @@ def verify_token(token: str):
     
 def auth_required(func):
     @wraps(func)
+    @security_scheme([{"bearer_auth": []}])
     @validate_headers(AuthHeaders)
     async def wrapper(*args, **kwargs):
         auth_header = request.headers.get("Authorization", "")

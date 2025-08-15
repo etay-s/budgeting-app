@@ -11,4 +11,4 @@ balance_bp = Blueprint('balance', __name__)
 @auth_required
 async def balance(data: BalanceRequest) -> BalanceResponse:
     result = data.income - data.expenses
-    return BalanceResponse(result)
+    return BalanceResponse(balance=result)
