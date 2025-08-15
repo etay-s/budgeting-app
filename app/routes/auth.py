@@ -6,10 +6,9 @@ from app.models import User
 from app.auth import hash_password, verify_password, create_access_token
 from app.repositories.user_repo import get_user_by_email
 
-sign_up_bp = Blueprint('sign_up', __name__)
-login_bp = Blueprint('login', __name__)
+auth_bp = Blueprint('auth', __name__)
 
-@sign_up_bp.post('/sign-up')
+@auth_bp.post('/sign-up')
 @validate_request(SignUpRequest)
 @validate_response(SignUpResponse)
 async def sign_up(data: SignUpRequest) -> SignUpResponse:
@@ -24,7 +23,7 @@ async def sign_up(data: SignUpRequest) -> SignUpResponse:
         await session.refresh(user)
         return SignUpResponse(id=user.id, name=user.name, email=user.email, password=user.hashed_password)
     
-@login_bp.post('/login')
+@auth_bp.post('/login')
 @validate_request(LoginRequest)
 @validate_response(LoginResponse)
 async def login(data: LoginRequest):
