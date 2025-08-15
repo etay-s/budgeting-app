@@ -4,7 +4,11 @@ from app.config import settings
 from functools import wraps
 from quart import request
 from quart_schema import validate_headers
-from app.auth import AuthHeaders
+from dataclasses import dataclass
+
+@dataclass
+class AuthHeaders:
+    authorization: str
 
 def create_access_token(data: dict, expires_delta: int = 3600):
     to_encode = data.copy()
