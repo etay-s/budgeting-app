@@ -1,10 +1,8 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
-@dataclass
-class BalanceRequest:
+class BalanceRequest(BaseModel):
     income: int
     expenses: int
 
-@dataclass
-class BalanceResponse:
+class BalanceResponse(BaseModel):
     balance: int

@@ -1,21 +1,17 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
-@dataclass
-class SignUpRequest:
+class SignUpRequest(BaseModel):
     name: str
     email: str
     password: str
 
-@dataclass
 class SignUpResponse(SignUpRequest):
     id: str
 
-@dataclass
-class LoginRequest:
+class LoginRequest(BaseModel):
     email: str
     password: str
 
-@dataclass
-class LoginResponse:
+class LoginResponse(BaseModel):
     access_token: str
     token_type: str = 'bearer'

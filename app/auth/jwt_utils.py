@@ -4,10 +4,9 @@ from app.config import settings
 from functools import wraps
 from quart import request
 from quart_schema import validate_headers
-from dataclasses import dataclass
+from pydantic import BaseModel
 
-@dataclass
-class AuthHeaders:
+class AuthHeaders(BaseModel):
     authorization: str
 
 def create_access_token(data: dict, expires_delta: int = 3600):
