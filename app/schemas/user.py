@@ -5,7 +5,7 @@ class SignUpRequest(BaseModel):
     email: str
     password: str
 
-class SignUpResponse(SignUpRequest):
+class SignUpResponse(BaseModel):
     id: str
 
 class LoginRequest(BaseModel):
