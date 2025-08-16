@@ -12,5 +12,5 @@ balance_bp = Blueprint("balance", __name__)
 @validate_response(BalanceResponse)
 @auth_required
 async def balance(req: BalanceRequest) -> BalanceResponse:
-    result = check_balance(income=req.income, expenses=req.expenses)
+    result = await check_balance(income=req.income, expenses=req.expenses)
     return BalanceResponse(balance=result)
