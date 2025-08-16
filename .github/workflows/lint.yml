@@ -1,0 +1,26 @@
+name: Lint & Type Check
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Poetry
+        run: pipx install poetry
+      - name: Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
+      - name: Ruff Lint
+        run: poetry run ruff .
+      - name: Black Check
+        run: poetry run black --check .
+      - name: Mypy Type Check
+        run: poetry run mypy .
