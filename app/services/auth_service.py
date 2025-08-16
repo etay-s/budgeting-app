@@ -20,7 +20,9 @@ async def login_user(email: str, password: str) -> str:
         user = await get_user_by_email(session, email)
 
         if not user or not verify_password(password, user.hashed_password):
-            return str(jsonify({"error": "Invalid credentials"})) # TODO: status 401 and response
+            return str(
+                jsonify({"error": "Invalid credentials"})
+            )  # TODO: status 401 and response
 
         token = create_access_token({"sub": str(user.id), "email": user.email})
 
