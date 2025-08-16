@@ -19,7 +19,7 @@ jobs:
         run: |
           poetry install --no-interaction --no-root
       - name: Ruff Lint
-        run: poetry run ruff .
+        run: poetry run ruff check .
       - name: Black Check
         run: poetry run black --check .
       - name: Mypy Type Check
