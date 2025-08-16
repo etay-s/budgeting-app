@@ -24,6 +24,7 @@ initdb = "init_db:run"
 ruff = "^0.12.9"
 black = "^25.1.0"
 mypy = "^1.17.1"
+pre-commit = "^4.3.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
