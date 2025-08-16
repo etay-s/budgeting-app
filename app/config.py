@@ -5,6 +5,7 @@ from urllib.parse import quote_plus
 
 env_file_name = f".env.{os.getenv('ENVIRONMENT', 'development')}"
 
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=env_file_name)
 
@@ -22,9 +23,10 @@ class Settings(BaseSettings):
     @property
     def db_url(self) -> str:
         return (
-            f'mysql+aiomysql://{self.db_user}'
-            f':{quote_plus(self.db_password.get_secret_value())}'
-            f'@{self.db_host}:{self.db_port}/{self.db_name}'
+            f"mysql+aiomysql://{self.db_user}"
+            f":{quote_plus(self.db_password.get_secret_value())}"
+            f"@{self.db_host}:{self.db_port}/{self.db_name}"
         )
+
 
 settings = Settings()
