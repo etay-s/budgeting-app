@@ -1,6 +1,6 @@
 import asyncio
 from app.db import engine, Base
-import app.models as _  # ensure models are registered
+from app.models import *  # ensure models are registered
 
 
 async def init_db():
