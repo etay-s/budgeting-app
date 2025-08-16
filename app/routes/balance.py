@@ -4,9 +4,10 @@ from app.schemas.balance import BalanceRequest, BalanceResponse
 from app.auth import auth_required
 from app.services.balance_service import check_balance
 
-balance_bp = Blueprint('balance', __name__)
+balance_bp = Blueprint("balance", __name__)
 
-@balance_bp.post('/balance')
+
+@balance_bp.post("/balance")
 @validate_request(BalanceRequest)
 @validate_response(BalanceResponse)
 @auth_required

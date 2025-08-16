@@ -1,4 +1,4 @@
-import jwt 
+import jwt
 from datetime import datetime, timezone, timedelta
 from app.config import settings
 from functools import wraps
@@ -6,14 +6,17 @@ from quart import request
 from quart_schema import validate_headers, security_scheme
 from pydantic import BaseModel
 
+
 class AuthHeaders(BaseModel):
     authorization: str
+
 
 def create_access_token(data: dict, expires_delta: int = 3600):
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + timedelta(seconds=expires_delta)
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, settings.jwt_secret, algorithm="HS256")
+
 
 def verify_token(token: str):
     try:
@@ -22,7 +25,8 @@ def verify_token(token: str):
         return None
     except jwt.InvalidTokenError:
         return None
-    
+
+
 def auth_required(func):
     @wraps(func)
     @security_scheme([{"bearer_auth": []}])

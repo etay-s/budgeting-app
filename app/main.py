@@ -8,21 +8,19 @@ app = Quart(__name__)
 QuartSchema(
     app,
     security_schemes={
-        "bearer_auth": {
-            "type": "http",
-            "scheme": "bearer",
-            "bearer_format": "JWT"
-        }
+        "bearer_auth": {"type": "http", "scheme": "bearer", "bearer_format": "JWT"}
     },
 )
 
 app.register_blueprint(balance_bp)
 app.register_blueprint(auth_bp)
 
-@app.get('/')
+
+@app.get("/")
 @auth_required
 async def hello():
-    return 'hello world!'
+    return "hello world!"
+
 
 def run() -> None:
     app.run(debug=settings.debug)
