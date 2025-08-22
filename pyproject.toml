@@ -25,9 +25,16 @@ ruff = "^0.12.9"
 black = "^25.1.0"
 mypy = "^1.17.1"
 pre-commit = "^4.3.0"
+pytest = "^8.4.1"
+pytest-asyncio = "^1.1.0"
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-q -ra"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
