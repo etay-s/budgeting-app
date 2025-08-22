@@ -1,10 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, NonNegativeFloat
 
 
 class BalanceRequest(BaseModel):
-    income: int
-    expenses: int
+    income: NonNegativeFloat
+    expenses: NonNegativeFloat
 
 
 class BalanceResponse(BaseModel):
-    balance: int
+    balance: NonNegativeFloat
