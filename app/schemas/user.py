@@ -1,9 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class SignUpRequest(BaseModel):
     name: str
-    email: str
+    email: EmailStr
     password: str
 
 
@@ -12,7 +12,7 @@ class SignUpResponse(BaseModel):
 
 
 class LoginRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
 
