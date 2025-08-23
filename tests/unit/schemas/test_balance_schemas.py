@@ -2,6 +2,7 @@ import pytest
 from pydantic import ValidationError
 from app.schemas.balance import BalanceRequest, BalanceResponse
 
+
 class TestBalanceRequestSchema:
     @pytest.mark.parametrize("income", [1000, 0, "0", "1000", 1000.50, "1000.50"])
     @pytest.mark.parametrize("expenses", [500, 0, "0", "500", 500.25, "500.25"])

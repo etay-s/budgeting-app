@@ -1,5 +1,6 @@
 from pydantic import SecretStr
 
+
 def password_strength_validator(secret: SecretStr) -> SecretStr:
     """Validate the strength of the password."""
     errors = []
