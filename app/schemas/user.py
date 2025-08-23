@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, UUID4
 
 
 class SignUpRequest(BaseModel):
@@ -8,7 +8,7 @@ class SignUpRequest(BaseModel):
 
 
 class SignUpResponse(BaseModel):
-    id: str
+    id: UUID4
 
 
 class LoginRequest(BaseModel):
