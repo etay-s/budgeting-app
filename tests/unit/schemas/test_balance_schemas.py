@@ -1,6 +1,6 @@
 import pytest
 from pydantic import ValidationError
-from app.schemas.balance import BalanceRequest, BalanceResponse
+from app.schemas.balance import BalanceRequest
 
 
 class TestBalanceRequestSchema:

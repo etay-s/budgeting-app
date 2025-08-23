@@ -10,7 +10,9 @@ auth_bp = Blueprint("auth", __name__)
 @validate_request(SignUpRequest)
 @validate_response(SignUpResponse)
 async def sign_up(req: SignUpRequest) -> SignUpResponse:
-    user_id = await register_user(name=req.name, email=req.email, password=req.password.get_secret_value())
+    user_id = await register_user(
+        name=req.name, email=req.email, password=req.password.get_secret_value()
+    )
     return SignUpResponse(id=user_id)
 
 

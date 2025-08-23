@@ -1,4 +1,3 @@
-from typing import Annotated
 from pydantic import BaseModel, EmailStr, UUID4
 from .utils.validator_types import StrongPassword, Name
 
