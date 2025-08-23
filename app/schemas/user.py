@@ -1,10 +1,10 @@
 from typing import Annotated
-from pydantic import BaseModel, EmailStr, UUID4, StringConstraints
-from .utils.validator_types import StrongPassword
+from pydantic import BaseModel, EmailStr, UUID4
+from .utils.validator_types import StrongPassword, Name
 
 
 class SignUpRequest(BaseModel):
-    name: Annotated[str, StringConstraints(min_length=2, max_length=50)]
+    name: Name
     email: EmailStr
     password: StrongPassword
 
