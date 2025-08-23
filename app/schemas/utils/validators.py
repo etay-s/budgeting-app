@@ -21,4 +21,4 @@ def password_strength_validator(secret: SecretStr) -> SecretStr:
     if errors:
         raise ValueError("Password must contain: " + " ".join(errors))
 
-    return password
+    return secret
