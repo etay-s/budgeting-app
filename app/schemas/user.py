@@ -1,10 +1,11 @@
-from pydantic import BaseModel, EmailStr, UUID4
+from typing import Annotated
+from pydantic import BaseModel, EmailStr, UUID4, SecretStr, StringConstraints
 
 
 class SignUpRequest(BaseModel):
-    name: str
+    name: Annotated[str, StringConstraints(min_length=2, max_length=50)]
     email: EmailStr
-    password: str
+    password: SecretStr
 
 
 class SignUpResponse(BaseModel):
@@ -13,7 +14,7 @@ class SignUpResponse(BaseModel):
 
 class LoginRequest(BaseModel):
     email: EmailStr
-    password: str
+    password: SecretStr
 
 
 class LoginResponse(BaseModel):
