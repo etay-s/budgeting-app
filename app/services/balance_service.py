@@ -1,2 +1,2 @@
-async def check_balance(income: int, expenses: int) -> int:
+async def check_balance(income: float, expenses: float) -> float:
     return income - expenses

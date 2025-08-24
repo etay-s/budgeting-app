@@ -1,19 +1,20 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, UUID4
+from .utils.validator_types import StrongPassword, Name
 
 
 class SignUpRequest(BaseModel):
-    name: str
-    email: str
-    password: str
+    name: Name
+    email: EmailStr
+    password: StrongPassword
 
 
 class SignUpResponse(BaseModel):
-    id: str
+    id: UUID4
 
 
 class LoginRequest(BaseModel):
-    email: str
-    password: str
+    email: EmailStr
+    password: StrongPassword
 
 
 class LoginResponse(BaseModel):
