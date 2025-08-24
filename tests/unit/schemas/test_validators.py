@@ -14,9 +14,9 @@ class TestPasswordStrengthValidator:
             "NoNumbers!",
         ]
     )
-    def test_password_error(self, password):
+    def test_invalid_password_returns_error(self, password):
         with pytest.raises(ValueError):
             password_strength_validator(SecretStr(password))
 
-    def test_password_valid(self):
+    def test_valid_password_passes(self):
         assert password_strength_validator(SecretStr("StrongPass1!")) == SecretStr("StrongPass1!")
