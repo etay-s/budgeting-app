@@ -2,11 +2,14 @@ import pytest
 from app.schemas.utils.validator_types import Name, StrongPassword
 from pydantic import BaseModel, ValidationError, SecretStr
 
+
 class NameModel(BaseModel):
     name: Name
 
+
 class PasswordModel(BaseModel):
     password: StrongPassword
+
 
 class TestNameType:
     @pytest.mark.parametrize(
@@ -15,7 +18,7 @@ class TestNameType:
             "",
             "A",
             "A" * 51,
-        ]
+        ],
     )
     def test_name_error(self, name):
         with pytest.raises(ValidationError):
@@ -27,11 +30,12 @@ class TestNameType:
             "John",
             "John Doe",
             "A" * 50,
-        ]
+        ],
     )
     def test_name_valid(self, name):
         model = NameModel(name=name)
         assert model.name == name
+
 
 class TestStrongPasswordType:
     @pytest.mark.parametrize(
@@ -39,7 +43,7 @@ class TestStrongPasswordType:
         [
             "Short1!",
             "NoSpecialChar1",
-        ]
+        ],
     )
     def test_invalid_password_returns_error(self, password):
         with pytest.raises(ValidationError):
