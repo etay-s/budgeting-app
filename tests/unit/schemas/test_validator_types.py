@@ -45,7 +45,6 @@ class TestStrongPasswordType:
         with pytest.raises(ValidationError):
             PasswordModel(password=password)
 
-    def test_valid_password_passes(self):
-        valid_password = "StrongPass1!"
-        model = PasswordModel(password=valid_password)
-        assert model.password == SecretStr(valid_password)
+    def test_valid_password_passes(self, strong_password):
+        model = PasswordModel(password=strong_password)
+        assert model.password == SecretStr(strong_password)
