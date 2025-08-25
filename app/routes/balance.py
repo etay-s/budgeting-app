@@ -8,7 +8,7 @@ from app.routes.utils.http_status_codes import HTTPStatusCodes
 balance_bp = Blueprint("balance", __name__)
 
 
-@balance_bp.post("/balance")
+@balance_bp.get("/balance")
 @validate_request(BalanceRequest)
 @validate_response(BalanceResponse)
 @auth_required
