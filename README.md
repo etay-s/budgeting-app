@@ -1,6 +1,6 @@
 # Goal-Driven Budgeting App API
 
-An async personal budgeting app API built with [Quart](https://pgjones.gitlab.io/quart/), [SQLAlchemy](https://docs.sqlalchemy.org/en/20/), and [MySQL](https://www.mysql.com/), demonstrating modern Python development practices and robust CI/CD implementation.
+An async personal budgeting app API demonstrating modern software engineering and development best practices, implemented in Python using [Quart](https://pgjones.gitlab.io/quart/), [SQLAlchemy](https://docs.sqlalchemy.org/en/20/), and [MySQL](https://www.mysql.com/).
 
 ## Key Technical Highlights
 
@@ -56,8 +56,6 @@ budgeting-app/
 ├── tests/             # Unit tests directory
 ├── .github/
 │   └── workflows/     # GitHub Actions CI/CD configurations
-├── scripts/
-│   └── pre-push      # Git hooks for local development
 ├── init_db.py         # Database initialization script
 ├── pyproject.toml     # Poetry configuration
 ├── .env.development   # Environment variables
@@ -71,13 +69,8 @@ budgeting-app/
    ```bash
    poetry install
    ```
-3. Set up pre-push hooks:
-   ```bash
-   cp scripts/pre-push .git/hooks/
-   chmod +x .git/hooks/pre-push
-   ```
-4. Configure environment variables
-5. Initialize the database:
+3. Configure environment variables
+4. Initialize the database:
    ```bash
    python init_db.py
    ```
@@ -106,14 +99,6 @@ poetry run mypy .
 ```bash
 poetry run flake8
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ## License
 
