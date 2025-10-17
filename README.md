@@ -48,16 +48,23 @@ Built with **Quart, SQLAlchemy, and MySQL**, this API demonstrates professional-
 
 ```text
 budgeting-app/
+
 ├── app/
 │   ├── auth/           # JWT & password hashing
 │   ├── models/         # ORM models
 │   ├── repositories/   # Database layer
 │   ├── routes/         # API endpoints
 │   ├── schemas/        # Pydantic validation models
-│   └── main.py         # Quart app entrypoint
-├── tests/              # Unit tests
-├── .github/workflows/  # CI configs
-└── pyproject.toml      # Poetry setup
+│   │   └── utils/      # Utility types and validators
+│   ├── services/       # Business logic
+│   ├── config.py       # App configuration
+│   ├── db.py           # Database connection setup
+│   └── main.py         # Quart app entry point
+├── tests/unit/              # Unit tests
+├── .github/workflows/       # CI configs
+├── .pre-commit-config.yaml  # Pre-push hook config
+├── init_db.py               # Database initialization script
+└── pyproject.toml           # Poetry setup
 ```
 ## 🛠️ In Progress
 - Expanding test coverage with a TDD approach
