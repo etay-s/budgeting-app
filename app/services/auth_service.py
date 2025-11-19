@@ -1,17 +1,15 @@
-from quart import jsonify
 from app.db import AsyncSessionLocal
 from app.models import User
 from app.auth import hash_password, verify_password, create_access_token
-from app.repositories.user_repo import get_user_by_email
 from sqlalchemy.exc import IntegrityError
 from app.repositories.user_repo import create_user, get_user_by_email
 
 
 async def register_user(name: str, email: str, password: str) -> str:
-    async with AsyncSessionLocal() as session:
+    async with AsyncSessionLocal():
         try:
             user = User(name=name, email=email, hashed_password=hash_password(password))
-            create_user(user)
+            await create_user(user)
             return user.id
         except IntegrityError as e:
             raise ValueError("Email already registered") from e
