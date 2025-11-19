@@ -1,8 +1,5 @@
-from typing import NamedTuple, Generic, TypeVar, Optional, Mapping
+from typing import TypeVar, Mapping
 
 T = TypeVar("T")
 
-class Response(NamedTuple, Generic[T]):
-    body: T
-    status: Optional[int] = None
-    headers: Optional[Mapping[str, str]] = None
+Response = tuple[T, int] | tuple[T, int, Mapping[str, str]]
