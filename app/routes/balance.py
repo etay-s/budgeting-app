@@ -4,6 +4,7 @@ from app.schemas.balance import BalanceRequest, BalanceResponse
 from app.auth import auth_required
 from app.services.balance_service import check_balance
 from app.routes.utils.http_status_codes import HTTPStatusCodes
+from app.types import Response
 
 balance_bp = Blueprint("balance", __name__)
 
@@ -12,6 +13,6 @@ balance_bp = Blueprint("balance", __name__)
 @validate_request(BalanceRequest)
 @validate_response(BalanceResponse)
 @auth_required
-async def get_balance(req: BalanceRequest) -> BalanceResponse:
+async def get_balance(req: BalanceRequest) -> Response[BalanceResponse]:
     result = await check_balance(income=req.income, expenses=req.expenses)
     return BalanceResponse(balance=result), HTTPStatusCodes.OK
